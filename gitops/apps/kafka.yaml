@@ -15,7 +15,7 @@ spec:
       releaseName: kafka-cluster
       values: |
         controller:
-          replicaCount: 1 # Keeping it low for local k3d demo resources
+          replicaCount: 1
         broker:
           replicaCount: 1
         zookeeper:

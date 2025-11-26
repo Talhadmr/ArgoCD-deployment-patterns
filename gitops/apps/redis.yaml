@@ -10,10 +10,9 @@ spec:
   source:
     repoURL: [https://charts.bitnami.com/bitnami](https://charts.bitnami.com/bitnami)
     chart: redis
-    targetRevision: 18.x.x  # Specify a version for stability
+    targetRevision: 18.x.x
     helm:
       releaseName: redis-cluster
-      # We can override values here directly or use a values file
       values: |
         architecture: replication
         auth:
@@ -26,6 +25,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true # ArgoCD will create the namespace automatically
-
-
+      - CreateNamespace=true
