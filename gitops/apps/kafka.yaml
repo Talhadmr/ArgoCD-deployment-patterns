@@ -16,6 +16,8 @@ spec:
       values: |
         image:
           pullPolicy: IfNotPresent
+        kraft:
+          enabled: false
         replicaCount: 1
         persistence:
           enabled: false
