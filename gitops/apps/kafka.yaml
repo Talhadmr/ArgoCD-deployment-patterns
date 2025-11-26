@@ -14,7 +14,7 @@ spec:
     helm:
       releaseName: kafka-cluster
       values: |
-        # Enable KRaft mode (No Zookeeper required)
+        # Switching to KRaft mode (No Zookeeper) to fix validation errors
         kraft:
           enabled: true
         zookeeper:
