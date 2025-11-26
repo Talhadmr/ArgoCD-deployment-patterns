@@ -15,8 +15,8 @@ spec:
       releaseName: kafka-cluster
       values: |
         image:
-          tag: latest
-          pullPolicy: Always
+          tag: 3.8.0-debian-12-r4
+          pullPolicy: IfNotPresent
         kraft:
           enabled: true
         controller:
