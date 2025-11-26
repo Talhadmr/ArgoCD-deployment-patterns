@@ -14,6 +14,9 @@ spec:
     helm:
       releaseName: redis-cluster
       values: |
+        image:
+          tag: latest
+          pullPolicy: Always
         architecture: standalone
         auth:
           enabled: false
