@@ -8,13 +8,12 @@ metadata:
 spec:
   project: default
   source:
-    # REPLACE THIS WITH YOUR GITHUB REPO URL
-    repoURL: [https://github.com/](https://github.com/)Talhadmr/ArgoCD-as-app-of-apps.git
+    repoURL: https://github.com/Talhadmr/ArgoCD-as-app-of-apps.git
     targetRevision: HEAD
     # This path points to the folder containing child app YAMLs
-    path: applications
+    path: gitops/apps
   destination:
-    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    server: https://kubernetes.default.svc
     namespace: argocd # The App of Apps itself lives in argocd namespace
   syncPolicy:
     automated:
