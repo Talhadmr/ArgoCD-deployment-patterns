@@ -8,18 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: redis
-    targetRevision: 20.3.0
-    helm:
-      releaseName: redis-cluster
-      values: |
-        architecture: standalone
-        auth:
-          enabled: false
-        master:
-          persistence:
-            enabled: false
+    repoURL: https://github.com/Talhadmr/ArgoCD-as-app-of-apps.git
+    targetRevision: HEAD
+    path: gitops/manifests/redis
   destination:
     server: https://kubernetes.default.svc
     namespace: redis-system
