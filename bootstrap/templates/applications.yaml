@@ -1,0 +1,31 @@
+{{- range .Values.applications }}
+{{- if .enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .syncWave | quote }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ $.Values.spec.project }}
+  source:
+    repoURL: {{ $.Values.spec.source.repoURL }}
+    targetRevision: {{ $.Values.spec.source.targetRevision }}
+    path: {{ .path }}
+  destination:
+    server: {{ $.Values.spec.destination.server }}
+    namespace: {{ .namespace }}
+  syncPolicy:
+    automated:
+      prune: {{ $.Values.spec.syncPolicy.automated.prune }}
+      selfHeal: {{ $.Values.spec.syncPolicy.automated.selfHeal }}
+    syncOptions:
+{{- range $.Values.spec.syncPolicy.syncOptions }}
+      - {{ . }}
+{{- end }}
+{{- end }}
+{{- end }}
