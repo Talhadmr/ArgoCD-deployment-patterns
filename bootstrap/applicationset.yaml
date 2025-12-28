@@ -7,7 +7,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/Talhadmr/ArgoCD-deployment-patterns
-      revision: applicationset-pattern
+      revision: applicationset
       directories:
       - path: charts/*
   
@@ -20,7 +20,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/Talhadmr/ArgoCD-deployment-patterns
-        targetRevision: applicationset-pattern
+        targetRevision: applicationset
         path: '{{path}}' 
         helm:
           valueFiles:
