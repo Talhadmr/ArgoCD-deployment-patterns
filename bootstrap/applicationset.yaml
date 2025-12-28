@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dynamic-addons
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/Talhadmr/ArgoCD-deployment-patterns
+      revision: applicationset-pattern
+      directories:
+      - path: charts/*
+  
+ 
+  template:
+    metadata:
+      name: '{{path.basename}}' 
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Talhadmr/ArgoCD-deployment-patterns
+        targetRevision: applicationset-pattern
+        path: '{{path}}' 
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd 
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
