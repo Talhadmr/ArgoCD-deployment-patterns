@@ -1,0 +1,23 @@
+# OS & Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Dependencies & Builds
+node_modules/
+__pycache__/
+venv/
+.venv/
+dist/
+build/
+.terraform/
+
+# Logs & Temp
+*.log
+tmp/
+
+# Secrets (Important)
+.env
+*.pem
+*.key
