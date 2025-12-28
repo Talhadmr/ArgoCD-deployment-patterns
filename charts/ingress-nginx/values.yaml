@@ -1,0 +1,8 @@
+# Override upstream values for ingress-nginx
+ingress-nginx:
+  controller:
+    service:
+      type: LoadBalancer
+    # k3d specific optimization (optional)
+    config:
+      use-forwarded-headers: "true"

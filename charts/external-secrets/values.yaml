@@ -1,0 +1,3 @@
+# Override upstream values for external-secrets
+external-secrets:
+  installCRDs: true

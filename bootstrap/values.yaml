@@ -1,0 +1,33 @@
+spec:
+  source:
+    repoURL: https://github.com/Talhadmr/ArgoCD-deployment-patterns
+    targetRevision: app-of-apps
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+
+applications:
+  - name: ingress-nginx
+    namespace: network-mesh
+    path: charts/ingress-nginx
+    enabled: true
+    syncWave: "1"
+
+  - name: cert-manager
+    namespace: network-mesh
+    path: charts/cert-manager
+    enabled: true
+    syncWave: "1"
+
+  - name: external-secrets
+    namespace: cluster-services
+    path: charts/external-secrets
+    enabled: true
+    syncWave: "2"

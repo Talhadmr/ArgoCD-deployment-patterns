@@ -1,0 +1,5 @@
+# Override upstream values for cert-manager
+cert-manager:
+  installCRDs: true
+  prometheus:
+    enabled: false # Save resources on local dev
